@@ -1,6 +1,7 @@
 ﻿using Password_Manager.PasswordChecker;
 using Password_Manager.PasswordChecker.PasswordRequirements;
 using Password_Manager.UsernameVerification;
+using Password_Manager.Repository;
 
 Filter chain = new SetUpChain().GetChain();
 
@@ -29,9 +30,9 @@ Console.WriteLine();
 Console.WriteLine();
 Console.WriteLine();
 
-Username a = Username.CreateThisEmail("diprova@gmail.com");
+Username a = Username.CreateThisEmail("diprova@Gmail.com");
 Console.WriteLine(a.EmailName);
-Console.WriteLine(a.MailServer);
+Console.WriteLine(a.EmailServer);
 Console.WriteLine(a.EmailDomain);
 
 //string mm = "gmail";

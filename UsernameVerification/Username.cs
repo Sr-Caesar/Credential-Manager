@@ -1,23 +1,24 @@
 ﻿
-using System.Runtime.CompilerServices;
-
 namespace Password_Manager.UsernameVerification
 {
     public class Username
     {
         private readonly string _emailName;
-        private readonly string _mailServer;
+        private readonly string _emailServer;
         private readonly string _emailDomain;
+        private readonly string _myEmail;
 
         public string EmailName=> _emailName;
-        public string MailServer => _mailServer;
+        public string EmailServer => _emailServer;
         public string EmailDomain => _emailDomain;
+        public string MyEmail => _myEmail;
 
-        Username(string emailName, string emailServer, string emailDomain)
+        private Username(string emailName, string emailServer, string emailDomain)
         {
             _emailName = emailName;
-            _mailServer = emailServer;
+            _emailServer = emailServer;
             _emailDomain = emailDomain;
+            _myEmail = emailName + emailServer + emailDomain;
         }
         public static Username CreateThisEmail(string email)
         {
