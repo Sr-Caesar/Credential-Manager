@@ -1,5 +1,6 @@
 ﻿using Password_Manager.PasswordChecker;
 using Password_Manager.PasswordChecker.PasswordRequirements;
+using Password_Manager.UsernameVerification;
 
 Filter chain = new SetUpChain().GetChain();
 
@@ -22,4 +23,19 @@ Console.WriteLine("------------------END---------------------");
 Console.WriteLine(chain.UnlockNextFilter(pw5));
 Console.WriteLine("------------------END---------------------");
 
+Console.WriteLine();
+Console.WriteLine();
+Console.WriteLine();
+Console.WriteLine();
+Console.WriteLine();
+
+Username a = Username.CreateThisEmail("diprova@gmail.com");
+Console.WriteLine(a.EmailName);
+Console.WriteLine(a.MailServer);
+Console.WriteLine(a.EmailDomain);
+
+//string mm = "gmail";
+//string nn = "it";
+//Console.WriteLine(Username.CheckServer(mm));
+//Console.WriteLine(Username.CheckDomain(nn));
 
