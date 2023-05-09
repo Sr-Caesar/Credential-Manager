@@ -28,7 +28,10 @@ namespace Password_Manager.Models
             Password = new Password(password);
             SubscriptionDate = myTime;
         }
-        public override string ToString()
-                => $"Matricola: {Matricola}; Email:{Username.MyEmail}; Password:{Password.MyPassword}; Data Creazione:{SubscriptionDate}";
+        public string GetSpec()
+                => $"{Matricola};{Username.MyEmail};{Password.MyPassword};{SubscriptionDate}";
+        public string AccNameFile()
+            => $"{Matricola}-{SubscriptionDate.ToString("yyyy-MM-dd")}.csv";
+
     }
 }
