@@ -6,7 +6,7 @@ namespace Password_Manager.Repository
 {
     public interface IAccountRepository
     {
-        Account? GetByEmail(Username username);
+        Account? GetByMatricola(int myID);
         Account? Insert(Username username, Password password);
     }
 }

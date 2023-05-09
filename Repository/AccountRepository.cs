@@ -12,42 +12,64 @@ namespace Password_Manager.Repository
     public class AccountRepository : IAccountRepository
     {
 
-        public Account? GetByEmail(Username mail)
+        public Account? GetByMatricola(int myID)
         {
             string command = @"SELECT * 
                              FROM Account
-                             WHERE Email = @Email";
-            return GetAccount(command, "@Email", mail.MyEmail);
+                             WHERE Matricola = @Matricola";
+            return GetAccount(command, "@Matricola", myID);
         }
         public Account? Insert(Username username, Password password)
         {
             var command = @"
-            INSERT INTO [Account] ([Username],[Password],[SubscriptionDate])
-            VALUES ( @Username, @Password, @SubscriptionDate)";
-            return InsertAccount(command, "@Username", "@Password", username.MyEmail, password.MyPassword);
+            INSERT INTO [Account] ([Username],[Password])
+            VALUES ( @Username, @Password)";
+            return InsertAccount(command, "@Username", "@Password", username, password);
         }
-        private Account? InsertAccount(string command, string parameterUsername, string parameterPassword, string username, string password)
-        {
-            throw new NotImplementedException();
-        }
-        private Account? GetAccount(string command, string parameterName, string email)
+        private Account? InsertAccount(string command, string parameterUsername, string parameterPassword, Username username, Password password)
         {
             try 
             {
                 using var cn = new SqlConnection(ConnectionString);
-                using var cmd = new SqlCommand(command, cn);
                 cn.Open();
-                cmd.Parameters.AddWithValue(parameterName, email);
+                using var cmd = new SqlCommand(command, cn);
+                cmd.Parameters.AddWithValue(parameterUsername, username.MyEmail);
+                cmd.Parameters.AddWithValue(parameterPassword, password.MyPassword);
+                int rowsAffected = cmd.ExecuteNonQuery();
+                if (rowsAffected > 0)
+                {
+                    Account account = new Account(username, password);
+                    return account;
+                }
+                else
+                {
+                    return null;
+                }
+            }
+            catch (SqlException ex)
+            {
+                Console.Error.WriteLine(ex);
+            }
+            return null;
+        }
+        private Account? GetAccount(string command, string parameterName, int myID)
+        {
+            try 
+            {
+                using var cn = new SqlConnection(ConnectionString);
+                cn.Open();
+                using var cmd = new SqlCommand(command, cn);
+                cmd.Parameters.AddWithValue(parameterName, myID);
                 using var reader = cmd.ExecuteReader();
                 if (reader?.Read() == true)
                 {
                     return new Account
-                    {
-                        Matricola = reader.GetInt32(0),
-                        Username = Username.CreateThisEmail(reader.GetString(1)),
-                        Password = new Password(reader.GetString(2)),
-                        SubscriptionDate = reader.GetDateTime(3)
-                    };
+                    (
+                        reader.GetInt32(0),
+                        reader.GetString(1),
+                        reader.GetString(2),
+                        reader.GetDateTime(3)
+                    );
                 }
             }
             catch (SqlException ex)

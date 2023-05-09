@@ -11,6 +11,9 @@ namespace Password_Manager.PasswordChecker
         {
             _password = password;
         }
-
+        public override string ToString()
+        {
+            return _password;
+        }
     }
 }

@@ -18,7 +18,7 @@ namespace Password_Manager.UsernameVerification
             _emailName = emailName;
             _emailServer = emailServer;
             _emailDomain = emailDomain;
-            _myEmail = emailName + emailServer + emailDomain;
+            _myEmail = $"{emailName}@{emailServer}{emailDomain}";
         }
         public static Username CreateThisEmail(string email)
         {
@@ -125,6 +125,10 @@ namespace Password_Manager.UsernameVerification
 
             myDomain = myDomain.ToLower();
             return emailDomains.Contains(myDomain);
+        }
+        public override string ToString()
+        {
+            return MyEmail;
         }
     }
 }
