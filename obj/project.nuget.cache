@@ -1,9 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "h02TQ34eVNQNSq7CvKen3VqDgUSxduL+n59WZDR5rw4JBTRu0Fa5ZqNhmVb56wX12PmlipUDIHteH5DCwYXTcw==",
+  "dgSpecHash": "+aa5PZRIJUHM6hxQhx1fASARFLieXgKy+j44bZ4KeVd4k7j7kwNEjPTs3PiwwWHYT2ixzmw+X25mLsuDtUPEhw==",
   "success": true,
   "projectFilePath": "C:\\Users\\Giuli\\source\\repos\\Password_Manager\\Password_Manager.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\Giuli\\.nuget\\packages\\csvhelper\\30.0.1\\csvhelper.30.0.1.nupkg.sha512",
     "C:\\Users\\Giuli\\.nuget\\packages\\microsoft.netcore.platforms\\3.1.0\\microsoft.netcore.platforms.3.1.0.nupkg.sha512",
     "C:\\Users\\Giuli\\.nuget\\packages\\microsoft.win32.registry\\4.7.0\\microsoft.win32.registry.4.7.0.nupkg.sha512",
     "C:\\Users\\Giuli\\.nuget\\packages\\runtime.native.system.data.sqlclient.sni\\4.7.0\\runtime.native.system.data.sqlclient.sni.4.7.0.nupkg.sha512",

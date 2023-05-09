@@ -13,8 +13,8 @@ Password myPassword = new("PAssw#ods001!!!");
 if (chain.UnlockNextFilter(myPassword))
 {
     var accRep = new AccountRepository();
-    //accRep.Insert(myEmail, myPassword);
-    var a = accRep.GetByMatricola(1);
+    accRep.Insert(myEmail, myPassword);
+    var a = accRep.GetByMatricola(3);
     Console.WriteLine(a.ToString());
 }
     

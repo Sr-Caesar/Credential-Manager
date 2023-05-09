@@ -29,6 +29,6 @@ namespace Password_Manager.Models
             SubscriptionDate = myTime;
         }
         public override string ToString()
-                => $"Matricola: {Matricola} Email:{Username?.MyEmail}, Data Creazione:{SubscriptionDate}";
+                => $"Matricola: {Matricola}; Email:{Username.MyEmail}; Password:{Password.MyPassword}; Data Creazione:{SubscriptionDate}";
     }
 }
